@@ -13,9 +13,26 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TopbarComponent } from './shared/ui/topbar/topbar.component';
 import { UniversalLayoutComponent } from './shared/ui/universal-layout/universal-layout.component';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatStepperModule } from '@angular/material/stepper';
+import { FirstStepFormComponent } from './cookbooks/stepper-register-form/first-step-form/first-step-form.component';
+import { SecondStepFormComponent } from './cookbooks/stepper-register-form/second-step-form/second-step-form.component';
+import { ThirdStepFormComponent } from './cookbooks/stepper-register-form/third-step-form/third-step-form.component';
+import { StepperRegisterFormComponent } from './cookbooks/stepper-register-form/stepper-register-form.component';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent, DashboardComponent],
+  declarations: [
+    AppComponent,
+    NxWelcomeComponent,
+    DashboardComponent,
+    StepperRegisterFormComponent,
+  ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, {
@@ -30,6 +47,19 @@ import { UniversalLayoutComponent } from './shared/ui/universal-layout/universal
     MatButtonModule,
     TopbarComponent,
     UniversalLayoutComponent,
+    ToastrModule.forRoot(), // ToastrModule added
+
+    MatInputModule,
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    MatStepperModule,
+    MatBadgeModule,
+    FirstStepFormComponent,
+    SecondStepFormComponent,
+    ThirdStepFormComponent,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

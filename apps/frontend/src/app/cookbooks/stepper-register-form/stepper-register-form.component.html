@@ -1,0 +1,85 @@
+<div class="container-fluid mt-5">
+    <div class="text-center">
+
+        <div [formGroup]="mainFormGroup">
+
+            <mat-stepper orientation="horizontal" linear #stepper>
+                <!-- FIRST STEP -->
+                <mat-step [stepControl]="firstFormGroup">
+                    <ng-template matStepLabel> Your Role </ng-template>
+                    <div class="row ms-5">
+                        <!-- FIRST FORM -->
+                        <div class="col-8 pl-2">
+                            <loki-fullstack-first-step-form
+                                [stepFormGroup]="firstFormGroup"></loki-fullstack-first-step-form>
+                        </div>
+                        <!-- end of FIRST FORM -->
+                        <!-- ILLUSTRATION -->
+                        <div class="col-4 p-2">
+                            <img style="width: 100%;min-height: 150%;" src="assets/job-title.svg">
+                        </div>
+                        <!-- end of ILLUSTRATION -->
+                    </div>
+                    <!-- STEPPER BUTTON -->
+                    <div class=" p-5">
+                        <button mat-button matStepperPrevious class="float-start">Back</button>
+                        <button mat-flat-button color="primary" class="float-end" matStepperNext>Next, Add Your
+                            Skillsets</button>
+                    </div>
+                    <!-- end of STEPPER BUTTON -->
+                </mat-step>
+                <!-- end of FIRST STEP -->
+                <!-- SECOND STEP -->
+                <mat-step [stepControl]="secondFormGroup">
+                    <ng-template matStepLabel> Skillset </ng-template>
+                    <div class="row ms-5">
+                        <div class="col-8 pl-2 p-3">
+                            <loki-fullstack-second-step-form
+                                [stepFormGroup]="secondFormGroup"></loki-fullstack-second-step-form>
+                        </div>
+                        <!-- ILLUSTRATION -->
+                        <div class="col-4 p-2">
+                            <img style="width: 100%;min-height: 130%;" src="assets/skillsets.svg">
+                        </div>
+                        <!-- end of ILLUSTRATION -->
+                    </div>
+                    <!-- STEPPER BUTTON -->
+                    <div class=" p-5">
+                        <button mat-button matStepperPrevious class="float-start">Back</button>
+                        <button mat-flat-button color="primary" (click)="secondFormGroup.markAllAsTouched()"
+                            class="float-end" matStepperNext>Next, Add Your
+                            Contact's Information</button>
+                    </div>
+                    <!-- end of STEPPER BUTTON -->
+                </mat-step>
+                <!-- end of SECOND STEP -->
+                <!-- THIRD STEP -->
+                <mat-step [stepControl]="thirdFormGroup">
+                    <ng-template matStepLabel> Contact's Info </ng-template>
+                    <div class="row ms-5">
+                        <div class="col-8 pl-2 p-3">
+                            <loki-fullstack-third-step-form
+                                [stepFormGroup]="thirdFormGroup"></loki-fullstack-third-step-form>
+                        </div>
+                        <!-- ILLUSTRATION -->
+                        <div class="col-4 p-2">
+                            <img style="width: 100%;min-height: 130%;" src="assets/personal-info.svg">
+                        </div>
+                        <!-- end of ILLUSTRATION -->
+                    </div>
+                    <!-- STEPPER BUTTON -->
+                    <div class=" p-5">
+                        <button mat-button matStepperPrevious class="float-start">Back</button>
+                        <button mat-flat-button color="primary" class="float-end" (click)="submit()">I'm Done,
+                            Submit!</button>
+                    </div>
+                    <!-- end of STEPPER BUTTON -->
+                </mat-step>
+                <!-- end of THIRD STEP -->
+
+            </mat-stepper>
+        </div>
+    </div>
+
+
+</div>
