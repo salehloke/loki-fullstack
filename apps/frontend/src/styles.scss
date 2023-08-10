@@ -9,6 +9,10 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
+.full-width {
+  width: 100%;
+}
+
 /** Library styles*/
 @import 'ngx-toastr/toastr';
 @import '~bootstrap/dist/css/bootstrap.css';

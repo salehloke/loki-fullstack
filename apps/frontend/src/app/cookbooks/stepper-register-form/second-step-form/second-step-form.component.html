@@ -1,0 +1,25 @@
+<div class="container">
+    <h2 class="text-start">What work are you here to do?</h2>
+    <p class="lead text-start pb-5">Your skills show clients what you can offer, and help us choose which jobs to
+        recommend to you.
+        Add
+        or remove the ones we’ve suggested, or start typing to pick more. It’s up to you.
+
+    </p>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form *ngIf="stepFormGroup" [formGroup]="stepFormGroup">
+                <!-- YOUR SKILLSET -->
+                <label class="float-start">Your Skills</label>
+                <ng-select appendTo="body" [items]="availableSkillsets" [closeOnSelect]="false" [searchable]="true"
+                    bindLabel="name" bindValue="name" [multiple]="true" formControlName="skillsets">
+                </ng-select>
+
+                <mat-error *ngIf="isErrorVisible">This is a mandatory input. Must select at least one</mat-error>
+                <!-- end of YOUR SKILLSET -->
+            </form>
+        </div>
+    </div>
+
+</div>

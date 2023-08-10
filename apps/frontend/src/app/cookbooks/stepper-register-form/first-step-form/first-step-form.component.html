@@ -1,0 +1,21 @@
+<div class="container">
+    <h2 class="text-start">Now, add your Professional job title to tell the world what you do.</h2>
+    <p class="lead text-start pb-5">Start with a keyword that best describes your work.</p>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form *ngIf="stepFormGroup" [formGroup]="stepFormGroup">
+                <!-- YOUR PROFESSIONAL ROLE -->
+                <mat-form-field class="full-width">
+                    <mat-label>Your Professional role</mat-label>
+                    <input matInput placeholder="Full-stack developer | Angular Developer" formControlName="jobTitle"
+                        required>
+                    <mat-error *ngIf="f?.jobTitle?.invalid">A descriptive title must have at least 4
+                        letters.</mat-error>
+                </mat-form-field>
+                <!-- end of YOUR PROFESSIONAL ROLE -->
+            </form>
+        </div>
+    </div>
+
+</div>
