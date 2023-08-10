@@ -1,0 +1,21 @@
+<mat-nav-list class="sidenav-list">
+    <div *ngFor="let navItem of navlist">
+        <a mat-list-item [routerLink]="navItem.route" (click)="onToggleClose()">
+            <mat-icon>{{navItem.icon}}</mat-icon>
+            <span>{{navItem.name}}</span>
+        </a>
+
+    </div>
+    <!-- <a mat-list-item routerLink="/signup" (click)="onToggleClose()">
+        <mat-icon>account_circle</mat-icon>
+        <span>Signup</span>
+    </a>
+    <a mat-list-item routerLink="/accomodation" (click)="onToggleClose()">
+        <mat-icon>hotel</mat-icon>
+        <span>Accomodation</span>
+    </a>
+    <a mat-list-item routerLink="/offers" (click)="onToggleClose()">
+        <mat-icon>loyalty</mat-icon>
+        <span>Offers</span>
+    </a> -->
+</mat-nav-list>
