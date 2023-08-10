@@ -1,0 +1,18 @@
+<!-- SIDENAV -->
+<mat-sidenav-container>
+    <mat-sidenav #sidenav opened="false">
+        <!-- SIDENAV LIST -->
+        <loki-fullstack-sidenav-list (closeSideNav)="sidenav.close()"></loki-fullstack-sidenav-list>
+        <!-- end of SIDENAV LIST -->
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <!-- TOOLBAR -->
+        <loki-fullstack-topbar (openSideNavToggle)="sidenav.toggle()"></loki-fullstack-topbar>
+        <!-- end of TOOLBAR -->
+        <main>
+            <ng-content></ng-content>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- end of SIDENAV -->
