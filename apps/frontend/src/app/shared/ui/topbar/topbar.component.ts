@@ -30,6 +30,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatProgressSpinnerModule,
     MatBadgeModule,
     MatTabsModule,
+    MatButtonModule,
   ],
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss'],
@@ -38,9 +39,13 @@ export class TopbarComponent {
   @Output() openSideNavToggle = new EventEmitter();
 
   isLoading = false;
-  topbarTitle = 'Saleh Loke Dashboard';
+  topbarTitle = 'Saleh Loke';
 
   openSidenav() {
     this.openSideNavToggle.emit();
+  }
+
+  menuItem1(){
+    
   }
 }

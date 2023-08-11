@@ -11,4 +11,8 @@ export const appRoutes: Route[] = [
     path: 'stepper-registration-form',
     component: StepperRegisterFormComponent,
   },
+  {
+    path: 'cookbooks',
+    component: StepperRegisterFormComponent,
+  },
 ];

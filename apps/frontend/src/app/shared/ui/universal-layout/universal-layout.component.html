@@ -5,13 +5,17 @@
         <loki-fullstack-sidenav-list (closeSideNav)="sidenav.close()"></loki-fullstack-sidenav-list>
         <!-- end of SIDENAV LIST -->
     </mat-sidenav>
-
+    <mat-drawer-container class="example-container">
+        <mat-drawer mode="side" opened>Drawer content</mat-drawer>
+        <mat-drawer-content>Main content</mat-drawer-content>
+    </mat-drawer-container>
     <mat-sidenav-content>
         <!-- TOOLBAR -->
         <loki-fullstack-topbar (openSideNavToggle)="sidenav.toggle()"></loki-fullstack-topbar>
         <!-- end of TOOLBAR -->
-        <main>
+        <main class="">
             <ng-content></ng-content>
+
         </main>
     </mat-sidenav-content>
 </mat-sidenav-container>
