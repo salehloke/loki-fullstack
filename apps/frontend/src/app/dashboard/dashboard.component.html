@@ -16,9 +16,39 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+          <div>
+            <div class="row">
+              <!-- ILLUSTRATION -->
+              <div class="col-12 p-2">
+                <!-- <img style="width: 50%;min-height: 30%;" src="assets/fill-form.svg"> -->
+              </div>
+              <!-- end of ILLUSTRATION -->
+              <div class="col">
+                <button id="sign-up-btn" mat-flat-button color="primary" [routerLink]="card.link"
+                  class="float-start">{{card.buttonLabel}}
+                </button>
+              </div>
+            </div>
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
+</div>
+
+
+<div class="row">
+  <!-- ILLUSTRATION -->
+  <div class="col-12 p-2">
+    <img style="width: 50%;min-height: 90%;" src="assets/fill-form.svg">
+  </div>
+  <!-- end of ILLUSTRATION -->
+  <div class="col">
+    <button id="sign-up-btn" mat-flat-button color="primary" routerLink="/stepper-registration-form"
+      class="float-start">Sign
+      Me
+      Up!
+      »
+    </button>
+  </div>
 </div>
