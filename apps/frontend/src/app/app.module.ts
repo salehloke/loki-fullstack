@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -29,7 +28,6 @@ import { StepperRegisterFormComponent } from './cookbooks/stepper-register-form/
 @NgModule({
   declarations: [
     AppComponent,
-    NxWelcomeComponent,
     DashboardComponent,
     StepperRegisterFormComponent,
   ],

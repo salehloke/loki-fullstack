@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     name: '@storybook/angular',
     options: {},
   },
+  staticDirs: ['../../frontend/src/assets'], //👈 Configures the static asset folder in Storybook
   previewHead: (head) => `
     ${head}
   <meta charset="utf-8" />
