@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Update User Details</h2>
+        <p class="lead"> </p>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <form [formGroup]="registrationFormGroup">
+                <!-- EMAIL -->
+                <mat-form-field class="full-width">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="email" required>
+                    <mat-error *ngIf="f['email'].invalid">Invalid Email</mat-error>
+                </mat-form-field>
+                <!-- end of EMAIL -->
+                <!-- USERNAME -->
+                <mat-form-field class="full-width">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Enter your username" formControlName="username" required>
+                    <mat-error *ngIf="f['username'].invalid">Invalid Username</mat-error>
+                </mat-form-field>
+                <!-- end of USERNAME -->
+                <!-- PHONE NUMBER -->
+                <mat-form-field class="full-width">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput placeholder="Enter your Phone number" formControlName="phoneNumber" required>
+                    <mat-error *ngIf="f?.phoneNumber?.invalid">Invalid Phone Number</mat-error>
+                </mat-form-field>
+                <!-- end of PHONE NUMBER -->
+                <!-- YOUR SKILLSET -->
+                <label class="float-start">Your Skills</label>
+                <ng-select appendTo="body" [items]="availableSkillsets" [closeOnSelect]="false" [searchable]="true"
+                    bindLabel="name" bindValue="name" [multiple]="true" formControlName="skillsets">
+                </ng-select>
+                <!-- end of YOUR SKILLSET -->
+                <!-- HOBBY -->
+                <mat-form-field class="full-width">
+                    <mat-label>Hobby</mat-label>
+                    <input matInput placeholder="salehloke" formControlName="hobby">
+                    <mat-error *ngIf="f['hobby'].invalid">Invalid Phone Number</mat-error>
+                </mat-form-field>
+                <!-- end of HOBBY -->
+
+                <!-- YOUR PROFESSIONAL ROLE -->
+                <mat-form-field class="full-width">
+                    <mat-label>Job Title / Professional</mat-label>
+                    <input matInput placeholder="Full-stack developer | Angular Developer" formControlName="jobTitle"
+                        required>
+                    <mat-error *ngIf="f?.jobTitle?.invalid">A descriptive title must have at least 4
+                        letters.</mat-error>
+                </mat-form-field>
+                <!-- end of YOUR PROFESSIONAL ROLE -->
+            </form>
+        </div>
+    </div>
+
+
+</div>
