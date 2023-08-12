@@ -29,6 +29,13 @@ export class DashboardComponent {
             cols: 1,
             rows: 1,
           },
+          {
+            title: 'User List',
+            link: `/user-list`,
+            buttonLabel: 'Go to User list',
+            cols: 1,
+            rows: 1,
+          },
         ];
       }
 
