@@ -11,11 +11,18 @@ import { ToastrService } from 'ngx-toastr';
 import { UserCRUDService } from '../../../shared/services/user-crud.service';
 import { availableSkillsets } from '../../stepper-register-form/second-step-form/second-step-form.component';
 import { MatInputModule } from '@angular/material/input';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'loki-fullstack-update-user-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, MatInputModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule,
+    NgSelectModule,
+  ],
   templateUrl: './update-user-form.component.html',
   styleUrls: ['./update-user-form.component.scss'],
 })
