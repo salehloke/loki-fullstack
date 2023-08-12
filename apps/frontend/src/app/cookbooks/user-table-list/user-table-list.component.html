@@ -1,0 +1,54 @@
+<div class="align-middle p-3">
+    <h2 class="text-start pb-3">User's List</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Hobby</th>
+                <th scope="col">Skillset</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of tableList$ | async; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>
+                    {{ data.username }}
+                </td>
+                <td>{{ data.email }}</td>
+                <td>{{ data.phoneNumber }}</td>
+                <td>
+                    <span *ngIf="!data.hobby">N/A</span>
+                    {{ data.hobby }}
+
+                </td>
+                <td>
+                    <span *ngIf="!data.skillsets.length">N/A</span>
+                    <div *ngFor="let skill of data.skillsets">
+
+                        <span class="badge  badge text-bg-primary rounded-pill">
+
+                            {{skill}}
+                        </span>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-xs" (click)="openDeleteRecordConfirmationDialog(data._id, data.username)">
+                        <mat-icon data-toggle="tooltip" data-placement="top" title="Delete"
+                            class="icon-display overflow-hidden">delete</mat-icon>
+                    </button>
+
+                    <button class="btn btn-xs" (click)="openUpdateConfirmationDialog(data._id, data.username)">
+                        <mat-icon data-toggle="tooltip" data-placement="top" title="Modify"
+                            class="icon-display overflow-hidden">edit</mat-icon>
+                    </button>
+                    <!-- <button class="btn btn-sm"> -->
+                    <!-- </button> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
