@@ -11,7 +11,7 @@ const meta: Meta<ThirdStepFormComponent> = {
   decorators: [
     moduleMetadata({
       declarations: [],
-      imports: [ThirdStepFormComponent, MatInputModule],
+      imports: [MatInputModule],
     }),
   ],
 };
