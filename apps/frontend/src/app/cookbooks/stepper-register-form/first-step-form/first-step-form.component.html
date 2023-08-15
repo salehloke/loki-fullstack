@@ -8,8 +8,8 @@
                 <!-- YOUR PROFESSIONAL ROLE -->
                 <mat-form-field class="full-width">
                     <mat-label>Your Professional role</mat-label>
-                    <input matInput placeholder="Full-stack developer | Angular Developer" formControlName="jobTitle"
-                        required>
+                    <input matInput id="jobTitle" placeholder="Full-stack developer | Angular Developer"
+                        formControlName="jobTitle" required>
                     <mat-error *ngIf="f?.jobTitle?.invalid">A descriptive title must have at least 4
                         letters.</mat-error>
                 </mat-form-field>

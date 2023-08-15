@@ -13,6 +13,8 @@ declare namespace Cypress {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface Chainable<Subject> {
     login(email: string, password: string): void;
+    byTestId(id: string): Chainable<any>;
+    clickOutside(): Chainable<any>;
   }
 }
 //
@@ -20,6 +22,19 @@ declare namespace Cypress {
 Cypress.Commands.add('login', (email, password) => {
   console.log('Custom command example: Login', email, password);
 });
+
+Cypress.Commands.add('byTestId', (id: string) =>
+  cy.get(`[data-testid="${id}"]`)
+);
+
+Cypress.Commands.add('clickOutside', function (): Chainable<any> {
+  return cy.get('body').click(0, 0); //0,0 here are the x and y coordinates
+});
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // returning false here prevents Cypress from failing the test
+  return false
+})
 //
 // -- This is a child command --
 // Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
