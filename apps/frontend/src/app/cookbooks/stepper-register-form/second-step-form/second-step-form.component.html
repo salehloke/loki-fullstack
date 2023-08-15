@@ -12,8 +12,8 @@
             <form *ngIf="stepFormGroup" [formGroup]="stepFormGroup">
                 <!-- YOUR SKILLSET -->
                 <label class="float-start">Your Skills</label>
-                <ng-select appendTo="body" [items]="availableSkillsets" [closeOnSelect]="false" [searchable]="true"
-                    bindLabel="name" bindValue="name" [multiple]="true" formControlName="skillsets">
+                <ng-select appendTo="body" id="skillsets" [items]="availableSkillsets" [closeOnSelect]="false"
+                    [searchable]="true" bindLabel="name" bindValue="name" [multiple]="true" formControlName="skillsets">
                 </ng-select>
 
                 <mat-error *ngIf="isErrorVisible">This is a mandatory input. Must select at least one</mat-error>

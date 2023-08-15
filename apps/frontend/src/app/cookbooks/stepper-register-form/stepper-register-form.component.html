@@ -23,7 +23,8 @@
                     <!-- STEPPER BUTTON -->
                     <div class=" p-5">
                         <button mat-button matStepperPrevious class="float-start">Back</button>
-                        <button mat-flat-button color="primary" class="float-end" matStepperNext>Next, Add Your
+                        <button mat-flat-button color="primary" id="first-next" class="float-end" matStepperNext>Next,
+                            Add Your
                             Skillsets</button>
                     </div>
                     <!-- end of STEPPER BUTTON -->
@@ -46,8 +47,8 @@
                     <!-- STEPPER BUTTON -->
                     <div class=" p-5">
                         <button mat-button matStepperPrevious class="float-start">Back</button>
-                        <button mat-flat-button color="primary" (click)="secondFormGroup.markAllAsTouched()"
-                            class="float-end" matStepperNext>Next, Add Your
+                        <button mat-flat-button color="primary" id="second-next"
+                            (click)="secondFormGroup.markAllAsTouched()" class="float-end" matStepperNext>Next, Add Your
                             Contact's Information</button>
                     </div>
                     <!-- end of STEPPER BUTTON -->
@@ -70,7 +71,8 @@
                     <!-- STEPPER BUTTON -->
                     <div class=" p-5">
                         <button mat-button matStepperPrevious class="float-start">Back</button>
-                        <button mat-flat-button color="primary" class="float-end" (click)="submit()">I'm Done,
+                        <button mat-flat-button color="primary" id="submit" class="float-end" (click)="submit()">I'm
+                            Done,
                             Submit!</button>
                     </div>
                     <!-- end of STEPPER BUTTON -->

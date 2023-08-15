@@ -60,7 +60,10 @@ export class StepperRegisterFormComponent {
 
   firstFormGroup: FormGroup<FirstFormGroupModel> =
     new FormGroup<FirstFormGroupModel>({
-      jobTitle: new FormControl('', [Validators.required]),
+      jobTitle: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
     });
 
   secondFormGroup: FormGroup<SecondFormGroupModel> =
