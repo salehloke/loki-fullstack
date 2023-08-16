@@ -44,10 +44,23 @@ describe('frontend', () => {
 
     cy.wait(1500);
 
+    // on second form
     cy.get('loki-fullstack-second-step-form').should('exist');
     const skillsetsInput = findEl('skillsets').should('exist');
-    skillsetsInput.click();
+    skillsetsInput
+      .click()
+      .get('ng-dropdown-panel')
+      .should('exist')
+      .get('.ng-option')
+      .get('span')
+      .contains('Web Development')
+      .should('contain', 'Web Development')
+      .click();
 
+    const secondNextButton = findEl('second-next').should('exist');
+    secondNextButton.click();
+
+    // .should('have.value', 'Web Development');
   });
 
   it('Second step form - Proceed to second step form', () => {

@@ -148,6 +148,12 @@ export class StepperRegisterFormComponent {
     }
   }
 
+  submitDataLog() {
+    const submitData = this.getSubmitDataModel();
+    console.log(submitData);
+    return submitData;
+  }
+
   get stepData() {
     const arrayControl = <FormArray>this.mainFormGroup.controls['stepData'];
     console.log(arrayControl);

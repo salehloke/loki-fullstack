@@ -129,6 +129,21 @@
       "options": {
         "command": "test-storybook -c apps/frontend/.storybook --url=http://localhost:4400"
       }
+    },
+    "component-test": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/frontend/cypress.config.ts",
+        "testingType": "component",
+        "skipServe": true,
+        "assets": ["apps/frontend/src/favicon.ico", "apps/frontend/src/assets"],
+        "styles": [
+          "@angular/material/prebuilt-themes/deeppurple-amber.css",
+          "apps/frontend/src/styles.scss",
+          "node_modules/bootstrap/dist/css/bootstrap.min.css"
+        ],
+        "devServerTarget": "frontend:build"
+      }
     }
   }
 }
