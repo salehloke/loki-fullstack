@@ -30,6 +30,13 @@ export class DashboardComponent {
             rows: 1,
           },
           {
+            title: 'Number Form',
+            link: `/number-form`,
+            buttonLabel: 'Go to Number Form',
+            cols: 1,
+            rows: 1,
+          },
+          {
             title: 'User List',
             link: `/user-list`,
             buttonLabel: 'Go to User list',

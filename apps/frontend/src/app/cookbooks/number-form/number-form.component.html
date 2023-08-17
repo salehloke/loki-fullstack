@@ -1,0 +1,46 @@
+<form [formGroup]="topupForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Topup Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- TOPUP AMOUNT -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #topupAmount placeholder="Topup Amount" mask="separator.2" thousandSeparator="," type="text"
+              formControlName="topupAmount">
+          </mat-form-field>
+          <span>Topup Amount: MYR {{f.topupAmount.value ?? 0}}</span>
+        </div>
+      </div>
+      <!-- end of TOPUP AMOUNT -->
+      <!-- TOPUP CHARGES -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #topupCharges placeholder="Topup charges" mask="separator.2" thousandSeparator=","
+              decimalMarker="." type="text" formControlName="topupCharges">
+          </mat-form-field>
+          <span>TOPUP CHARGES: MYR {{f.topupCharges.value ?? 0}}</span>
+
+        </div>
+      </div>
+      <!-- end of TOPUP CHARGES -->
+      <!-- TOTAL AMOUNT TO BE PAID -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #totalAmountToBePaid placeholder="Topup Amount" mask="separator.2" thousandSeparator=","
+              type="text" formControlName="totalAmountToBePaid">
+          </mat-form-field>
+          <span>TOTAL AMOUNT TO BE PAID: MYR {{f.totalAmountToBePaid.value ?? 0}}</span>
+        </div>
+      </div>
+      <!-- end of TOTAL AMOUNT TO BE PAID -->
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
