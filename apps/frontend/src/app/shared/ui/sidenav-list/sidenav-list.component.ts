@@ -56,6 +56,11 @@ export class SidenavListComponent {
       route: '/user-list',
       icon: 'list',
     },
+    {
+      name: 'Number Form',
+      route: '/number-form',
+      icon: 'form',
+    },
   ];
 
   onToggleClose() {
