@@ -1,5 +1,6 @@
 <div class="grid-container">
   <h1 class="mat-h1">Welcome to Dashboard =D</h1>
+  <h6>Kindly select one of below card to continue</h6>
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
