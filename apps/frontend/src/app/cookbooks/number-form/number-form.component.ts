@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, LOCALE_ID } from '@angular/core';
 
 import {
   ReactiveFormsModule,
@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { formatNumber } from '@angular/common';
 
 @Component({
   selector: 'loki-fullstack-number-form',
@@ -32,16 +33,21 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
   providers: [provideNgxMask()],
 })
 export class NumberFormComponent implements OnInit {
+  formatted = Number(formatNumber(3.88889, 'en-MY', '1.2-8'));
   private fb = inject(FormBuilder);
   topupForm = new FormGroup({
-    topupAmount: new FormControl(null),
+    topupAmount: new FormControl(this.formatted),
     topupCharges: new FormControl(null),
     totalAmountToBePaid: new FormControl<number>(0),
+    topupAmountNoNGX: new FormControl(null),
+    topupChargesNoNGX: new FormControl(null),
+    totalAmountToBePaidNoNGX: new FormControl<number>(0),
   });
 
   ngOnInit() {
     this.topupForm.controls.topupAmount.valueChanges.subscribe((value) => {
-      const topupAmount = value ?? 0;
+      const formatted = Number(formatNumber(value ?? 0, 'en-MY', '1.2'));
+      const topupAmount = formatted ?? 0;
       const topupCharges = this.f.topupCharges.value ?? 0;
 
       const totalAmountToBePaid = topupAmount + topupCharges;
@@ -55,6 +61,30 @@ export class NumberFormComponent implements OnInit {
       const totalAmountToBePaid = topupAmount + topupCharges;
       this.f.totalAmountToBePaid.setValue(totalAmountToBePaid);
     });
+
+    this.topupForm.controls.topupAmountNoNGX.valueChanges.subscribe((value) => {
+      const topupAmount = value ?? 0;
+      const topupCharges = this.f.topupChargesNoNGX.value ?? 0;
+
+      const totalAmountToBePaid = topupAmount + topupCharges;
+      this.f.totalAmountToBePaidNoNGX.setValue(totalAmountToBePaid);
+    });
+
+    this.topupForm.controls.topupChargesNoNGX.valueChanges.subscribe(
+      (value) => {
+        const topupAmount = this.f.topupAmountNoNGX.value ?? 0;
+        const topupCharges = this.f.topupChargesNoNGX.value ?? 0;
+
+        const totalAmountToBePaid = topupAmount + topupCharges;
+        this.f.totalAmountToBePaidNoNGX.setValue(totalAmountToBePaid);
+      }
+    );
+  }
+
+  onTopupAmountChanges() {
+    const topupAmount = this.f.topupAmount.value;
+    const formatted = topupAmount?.toFixed(4) ?? 0;
+    this.f.topupAmount.setValue(Number(formatted));
   }
 
   hasUnitNumber = false;
