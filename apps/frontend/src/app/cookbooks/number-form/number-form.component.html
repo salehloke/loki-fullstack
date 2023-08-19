@@ -23,7 +23,6 @@
               decimalMarker="." type="text" formControlName="topupCharges">
           </mat-form-field>
           <span>TOPUP CHARGES: MYR {{f.topupCharges.value ?? 0}}</span>
-
         </div>
       </div>
       <!-- end of TOPUP CHARGES -->
@@ -35,6 +34,10 @@
               type="text" formControlName="totalAmountToBePaid">
           </mat-form-field>
           <span>TOTAL AMOUNT TO BE PAID: MYR {{f.totalAmountToBePaid.value ?? 0}}</span>
+          <br>
+          <span>PREVIOUS TOTAL AMOUNT: MYR {{f.previousTotalAmountToBePaid.value ?? 0}}</span>
+          <br>
+          <span>VARIANCE: {{f.variance.value ?? 0}}</span>
         </div>
       </div>
       <!-- end of TOTAL AMOUNT TO BE PAID -->

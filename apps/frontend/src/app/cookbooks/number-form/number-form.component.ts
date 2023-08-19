@@ -14,6 +14,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { formatNumber } from '@angular/common';
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
 
 @Component({
   selector: 'loki-fullstack-number-form',
@@ -39,28 +40,76 @@ export class NumberFormComponent implements OnInit {
     topupAmount: new FormControl(this.formatted),
     topupCharges: new FormControl(null),
     totalAmountToBePaid: new FormControl<number>(0),
+    previousTotalAmountToBePaid: new FormControl<number>(0),
     topupAmountNoNGX: new FormControl(null),
     topupChargesNoNGX: new FormControl(null),
     totalAmountToBePaidNoNGX: new FormControl<number>(0),
+    variance: new FormControl<number>(0),
   });
 
   ngOnInit() {
-    this.topupForm.controls.topupAmount.valueChanges.subscribe((value) => {
-      const formatted = Number(formatNumber(value ?? 0, 'en-MY', '1.2'));
-      const topupAmount = formatted ?? 0;
-      const topupCharges = this.f.topupCharges.value ?? 0;
+    this.topupForm.controls.topupAmount.valueChanges
+      .pipe(
+        distinctUntilChanged((prev, curr) => {
+          console.log('prev', prev);
+          console.log('curr', curr);
+          return prev === curr;
+        }),
+        debounceTime(500),
+        tap((value) => {
+          console.log('prev, curr', value);
+        })
+      )
+      .subscribe((value) => {
+        if (this.f.totalAmountToBePaid.value) {
+          this.f.previousTotalAmountToBePaid.setValue(
+            this.f.totalAmountToBePaid.value
+          );
+        }
+        const targetVal = value?.toFixed(8) ?? 0;
+        // const formatted = Number(formatNumber(targetVal, 'en-MY', '1.2'));
+        const formatted = Number(targetVal);
+        const topupAmount = formatted ?? 0;
+        const topupCharges = this.f.topupCharges.value ?? 0;
+        console.log('formatNumber', formatNumber(value ?? 0, 'en-MY', '1.2'));
+        console.log('TA', topupAmount);
+        console.log('TC', topupCharges);
+        const totalAmountToBePaid = topupAmount + topupCharges;
+        this.f.totalAmountToBePaid.setValue(totalAmountToBePaid);
+      });
 
-      const totalAmountToBePaid = topupAmount + topupCharges;
-      this.f.totalAmountToBePaid.setValue(totalAmountToBePaid);
-    });
+    this.f.totalAmountToBePaid.valueChanges
+      .pipe(distinctUntilChanged(), debounceTime(500))
+      .subscribe((value) => {
+        console.log('touched', this.f.totalAmountToBePaid.touched);
+        console.log('dirty', this.f.totalAmountToBePaid.dirty);
+        if (this.f.totalAmountToBePaid.dirty) {
+          // if the final amount not edited
+          const prevAmount = this.f.previousTotalAmountToBePaid.value ?? 0;
+          const currentAmount = this.f.totalAmountToBePaid.value ?? 0;
+          const variance = currentAmount - prevAmount;
+          this.f.variance.setValue(variance);
+        }
+      });
 
-    this.topupForm.controls.topupCharges.valueChanges.subscribe((value) => {
-      const topupAmount = this.f.topupAmount.value ?? 0;
-      const topupCharges = this.f.topupCharges.value ?? 0;
+    this.topupForm.controls.topupCharges.valueChanges
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(500),
+        tap((value) => {
+          console.log('value', value);
+        })
+      )
+      .subscribe((value) => {
+        this.f.previousTotalAmountToBePaid.setValue(
+          this.f.totalAmountToBePaid.value
+        );
+        const topupAmount = this.f.topupAmount.value ?? 0;
+        const topupCharges = this.f.topupCharges.value ?? 0;
 
-      const totalAmountToBePaid = topupAmount + topupCharges;
-      this.f.totalAmountToBePaid.setValue(totalAmountToBePaid);
-    });
+        const totalAmountToBePaid = topupAmount + topupCharges;
+        this.f.totalAmountToBePaid.setValue(totalAmountToBePaid);
+      });
 
     this.topupForm.controls.topupAmountNoNGX.valueChanges.subscribe((value) => {
       const topupAmount = value ?? 0;
