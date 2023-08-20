@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { formatNumber } from '@angular/common';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
+import { TotalAmountComponent } from './total-amount/total-amount.component';
 
 @Component({
   selector: 'loki-fullstack-number-form',
@@ -30,11 +31,14 @@ import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
     ReactiveFormsModule,
     NgxMaskDirective,
     NgxMaskPipe,
+    TotalAmountComponent,
   ],
   providers: [provideNgxMask()],
 })
 export class NumberFormComponent implements OnInit {
   formatted = Number(formatNumber(3.88889, 'en-MY', '1.2-8'));
+  varianceVal = 2;
+
   private fb = inject(FormBuilder);
   topupForm = new FormGroup({
     topupAmount: new FormControl(this.formatted),
@@ -48,11 +52,12 @@ export class NumberFormComponent implements OnInit {
   });
 
   ngOnInit() {
+    setTimeout(() => {
+      this.varianceVal = 10;
+    }, 500);
     this.topupForm.controls.topupAmount.valueChanges
       .pipe(
         distinctUntilChanged((prev, curr) => {
-          console.log('prev', prev);
-          console.log('curr', curr);
           return prev === curr;
         }),
         debounceTime(500),
@@ -134,6 +139,11 @@ export class NumberFormComponent implements OnInit {
     const topupAmount = this.f.topupAmount.value;
     const formatted = topupAmount?.toFixed(4) ?? 0;
     this.f.topupAmount.setValue(Number(formatted));
+  }
+
+  varianceChanges(varianceAmount: number) {
+    this.varianceVal = varianceAmount;
+    console.log('variance Amount', varianceAmount);
   }
 
   hasUnitNumber = false;
