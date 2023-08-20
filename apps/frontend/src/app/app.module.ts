@@ -24,6 +24,7 @@ import { FirstStepFormComponent } from './cookbooks/stepper-register-form/first-
 import { SecondStepFormComponent } from './cookbooks/stepper-register-form/second-step-form/second-step-form.component';
 import { ThirdStepFormComponent } from './cookbooks/stepper-register-form/third-step-form/third-step-form.component';
 import { StepperRegisterFormComponent } from './cookbooks/stepper-register-form/stepper-register-form.component';
+import { TotalAmountComponent } from './cookbooks/number-form/total-amount/total-amount.component';
 
 @NgModule({
   declarations: [

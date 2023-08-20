@@ -1,0 +1,16 @@
+<!-- TOTAL AMOUNT TO BE PAID -->
+
+<div [formGroup]="selectedForm" class="row">
+    <div class="col">
+        <mat-form-field class="full-width">
+            <input matInput #totalAmountToBePaid placeholder="Topup Amount" (change)="calculateVariance()"
+                mask="separator.2" thousandSeparator="," type="text" formControlName="totalAmountToBePaid">
+        </mat-form-field>
+        <span>TOTAL AMOUNT TO BE PAID: MYR {{totalAmountController.value ?? 0}}</span>
+        <br>
+        <span>PREVIOUS TOTAL AMOUNT: MYR {{previousTotalAmountToBePaidController.value ?? 0}}</span>
+        <br>
+        <span>VARIANCE: {{variance2 ?? 0}}</span>
+    </div>
+</div>
+<!-- end of TOTAL AMOUNT TO BE PAID -->

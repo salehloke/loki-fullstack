@@ -27,7 +27,7 @@
       </div>
       <!-- end of TOPUP CHARGES -->
       <!-- TOTAL AMOUNT TO BE PAID -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput #totalAmountToBePaid placeholder="Topup Amount" mask="separator.2" thousandSeparator=","
@@ -39,8 +39,11 @@
           <br>
           <span>VARIANCE: {{f.variance.value ?? 0}}</span>
         </div>
-      </div>
+      </div> -->
       <!-- end of TOTAL AMOUNT TO BE PAID -->
+      <loki-fullstack-total-amount [selectedForm]="topupForm" [totalAmountController]="f.totalAmountToBePaid"
+        [previousTotalAmountToBePaidController]="f.previousTotalAmountToBePaid" [varianceController]="f.variance"
+        [variance2]="varianceVal" (varianceChanged)="varianceChanges($event)"></loki-fullstack-total-amount>
     </mat-card-content>
     <mat-card-header>
       <mat-card-title>Without NGX-mask</mat-card-title>
