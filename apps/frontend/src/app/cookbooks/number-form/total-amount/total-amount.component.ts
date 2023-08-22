@@ -1,3 +1,4 @@
+import { formatNumber } from '@angular/common';
 import {
   Component,
   Input,
@@ -47,8 +48,18 @@ export class TotalAmountComponent implements OnInit {
 
   @Output() varianceChanged = new EventEmitter();
 
+  customFormGroup = new FormGroup({
+    commaSeparatedValue: new FormControl<number>(0),
+    numberValue: new FormControl<number | null>(0),
+  });
+
   ngOnInit(): void {
-    this.totalAmountController.valueChanges.subscribe((value) => {});
+    this.f.commaSeparatedValue.valueChanges.subscribe((value) => {
+      const fromattedNum = value === null ? 0 : value;
+      const formattedStr = formatNumber(fromattedNum, 'en-My', '1.2-2');
+      console.log('formatted', fromattedNum);
+      this.f.numberValue.setValue(fromattedNum);
+    });
   }
 
   calculateVariance() {
@@ -58,5 +69,9 @@ export class TotalAmountComponent implements OnInit {
     this.variance2 = variance;
     console.log(variance);
     this.varianceChanged.emit(variance);
+  }
+
+  get f() {
+    return this.customFormGroup.controls;
   }
 }
