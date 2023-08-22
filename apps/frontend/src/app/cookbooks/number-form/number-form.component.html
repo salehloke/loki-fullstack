@@ -53,9 +53,10 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #topupAmount placeholder="Topup Amount" type="number" formControlName="topupAmountNoNGX">
+            <input matInput #topupAmount placeholder="Topup Amount" decimalNumberFormatter 
+              formControlName="topupAmountNoNGX">
           </mat-form-field>
-          <span>Topup Amount: MYR {{f.topupAmountNoNGX.value ?? 0}}</span>
+          <span>Topup Amount numberformatter: MYR {{f.topupAmountNoNGX.value ?? 0}}</span>
         </div>
       </div>
       <!-- end of TOPUP AMOUNT -->

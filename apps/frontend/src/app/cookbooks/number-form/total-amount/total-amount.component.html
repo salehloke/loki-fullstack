@@ -1,10 +1,10 @@
 <!-- TOTAL AMOUNT TO BE PAID -->
 
-<div [formGroup]="selectedForm" class="row">
+<div [formGroup]="customFormGroup" class="row">
     <div class="col">
         <mat-form-field class="full-width">
-            <input matInput #totalAmountToBePaid placeholder="Topup Amount" (change)="calculateVariance()"
-                mask="separator.2" thousandSeparator="," type="text" formControlName="totalAmountToBePaid">
+            <input matInput #totalAmountToBePaid placeholder="Topup Amount" (change)="calculateVariance()" type="text"
+                formControlName="commaSeparatedValue" decimalNumberFormatter>
         </mat-form-field>
         <span>TOTAL AMOUNT TO BE PAID: MYR {{totalAmountController.value ?? 0}}</span>
         <br>

@@ -16,6 +16,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { formatNumber } from '@angular/common';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
 import { TotalAmountComponent } from './total-amount/total-amount.component';
+import { DecimalNumberFormatterDirective } from '../../shared/directives/decimal-number-formatter.directive';
+import { AppModule } from '../../app.module';
 
 @Component({
   selector: 'loki-fullstack-number-form',
@@ -32,6 +34,7 @@ import { TotalAmountComponent } from './total-amount/total-amount.component';
     NgxMaskDirective,
     NgxMaskPipe,
     TotalAmountComponent,
+    DecimalNumberFormatterDirective,
   ],
   providers: [provideNgxMask()],
 })
@@ -119,20 +122,20 @@ export class NumberFormComponent implements OnInit {
     this.topupForm.controls.topupAmountNoNGX.valueChanges.subscribe((value) => {
       const topupAmount = value ?? 0;
       const topupCharges = this.f.topupChargesNoNGX.value ?? 0;
-
+      console.log('topupAmount', topupAmount);
       const totalAmountToBePaid = topupAmount + topupCharges;
       this.f.totalAmountToBePaidNoNGX.setValue(totalAmountToBePaid);
     });
 
-    this.topupForm.controls.topupChargesNoNGX.valueChanges.subscribe(
-      (value) => {
+    this.topupForm.controls.topupChargesNoNGX.valueChanges
+      .pipe(debounceTime(700))
+      .subscribe((value) => {
         const topupAmount = this.f.topupAmountNoNGX.value ?? 0;
         const topupCharges = this.f.topupChargesNoNGX.value ?? 0;
 
         const totalAmountToBePaid = topupAmount + topupCharges;
         this.f.totalAmountToBePaidNoNGX.setValue(totalAmountToBePaid);
-      }
-    );
+      });
   }
 
   onTopupAmountChanges() {

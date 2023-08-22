@@ -25,13 +25,16 @@ import { SecondStepFormComponent } from './cookbooks/stepper-register-form/secon
 import { ThirdStepFormComponent } from './cookbooks/stepper-register-form/third-step-form/third-step-form.component';
 import { StepperRegisterFormComponent } from './cookbooks/stepper-register-form/stepper-register-form.component';
 import { TotalAmountComponent } from './cookbooks/number-form/total-amount/total-amount.component';
+import { DecimalNumberFormatterDirective } from './shared/directives/decimal-number-formatter.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     StepperRegisterFormComponent,
+    // DecimalNumberFormatterDirective,
   ],
+  // exports: [DecimalNumberFormatterDirective],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, {
