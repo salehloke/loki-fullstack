@@ -15,13 +15,13 @@ export class DashboardComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          {
-            title: 'Stepper Form',
-            link: `/stepper-registration-form`,
-            buttonLabel: 'Go to Stepper Form',
-            cols: 1,
-            rows: 1,
-          },
+          // {
+          //   title: 'Stepper Form',
+          //   link: `/stepper-registration-form`,
+          //   buttonLabel: 'Go to Stepper Form',
+          //   cols: 1,
+          //   rows: 1,
+          // },
           {
             title: 'Cookbooks',
             link: `/cookbooks`,
@@ -47,13 +47,13 @@ export class DashboardComponent {
       }
 
       return [
-        {
-          title: 'Stepper Form',
-          link: `/stepper-registration-form`,
-          buttonLabel: 'Sign Me Up! »',
-          cols: 2,
-          rows: 1,
-        },
+        // {
+        //   title: 'Stepper Form',
+        //   link: `/stepper-registration-form`,
+        //   buttonLabel: 'Sign Me Up! »',
+        //   cols: 2,
+        //   rows: 1,
+        // },
         {
           title: 'Cookbooks',
           link: `/cookbooks`,

@@ -46,11 +46,11 @@ export class SidenavListComponent {
       route: '/',
       icon: 'dashboard',
     },
-    {
-      name: 'Stepper Registration Form',
-      route: '/stepper-registration-form',
-      icon: 'assignment',
-    },
+    // {
+    //   name: 'Stepper Registration Form',
+    //   route: '/stepper-registration-form',
+    //   icon: 'assignment',
+    // },
     {
       name: 'User List',
       route: '/user-list',
