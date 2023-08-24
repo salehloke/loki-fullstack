@@ -54,13 +54,13 @@ export class DashboardComponent {
         //   cols: 2,
         //   rows: 1,
         // },
-        {
-          title: 'Cookbooks',
-          link: `/cookbooks`,
-          buttonLabel: 'Go to Stepper Form',
-          cols: 2,
-          rows: 1,
-        },
+        // {
+        //   title: 'Cookbooks',
+        //   link: `/cookbooks`,
+        //   buttonLabel: 'Go to Stepper Form',
+        //   cols: 2,
+        //   rows: 1,
+        // },
       ];
     })
   );
