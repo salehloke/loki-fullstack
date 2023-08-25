@@ -146,7 +146,6 @@ export class NumberFormComponent implements OnInit {
 
   varianceChanges(varianceAmount: number) {
     this.varianceVal = varianceAmount;
-    console.log('variance Amount', varianceAmount);
   }
 
   hasUnitNumber = false;
